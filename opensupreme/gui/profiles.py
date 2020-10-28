@@ -63,8 +63,8 @@ def add_profile(profiles_file):
     profile["apt"] = input("Appt Num (press enter if n/a): ").strip()
     profile["zip"] = input("Zipcode: ").strip()
     profile["city"] = input("City: ").strip()
-    profile["state"] = input("State (NY, AZ, CA): ").strip().upper()
-    profile["country"] = "USA"
+    profile["state"] = input("State: ").strip().upper()
+    profile["country"] = "UK"
 
     cn = input("Card Number: ").replace(" ", "").replace("-", "")
     profile["card_number"] = " ".join([cn[i:i+4] for i in range(0, len(cn), 4)])
@@ -184,8 +184,6 @@ def make_changes_to_profile(profiles, index, selections, aspect, profile_aspect_
     if aspect == "card number":
         new_value = input("Card Number: ").replace(" ", "").replace("-", "")
         profiles[index]["card_number"] = " ".join([new_value[i:i+4] for i in range(0, len(new_value), 4)])
-    elif aspect == "state":
-        profiles[index]["state"] = input("State: (NY, AZ, CA) ").strip().upper()
     elif len(selections[aspect]) == 2:
         profiles[index][profile_aspect_key] = input(f"{selections[aspect][1]}: ").strip()
     else:
